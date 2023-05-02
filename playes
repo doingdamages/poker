@@ -1,0 +1,27 @@
+int leNombreDix = 10;
+@interface Personne : NSObject
+
+@property (nonatomic, strong) NSString *nom;
+@property (nonatomic, assign) int note;
+
+@end
+
+@implementation Personne
+
+@end
+
+// Création d'une instance de Personne et assignation de note
+Personne *unePersonne = [[Personne alloc] init];
+unePersonne.nom = @"Jean";
+unePersonne.note = 7;
+// Création d'un tableau de Personne et ajout de plusieurs instances
+NSMutableArray *personnes = [[NSMutableArray alloc] init];
+[personnes addObject:[[Personne alloc] initWithNom:@"Jean" note:7]];
+[personnes addObject:[[Personne alloc] initWithNom:@"Pierre" note:9]];
+[personnes addObject:[[Personne alloc] initWithNom:@"Marie" note:8]];
+// Accéder à la note de la deuxième personne
+Personne *personne2 = personnes[1];
+int noteDePersonne2 = personne2.note;
+// Tri du tableau de personnes par note
+NSSortDescriptor *noteDescriptor = [[NSSortDescriptor alloc] initWithKey:@"note" ascending:YES];
+NSArray *triéParNote = [personnes sortedArrayUsingDescriptors:@[noteDescriptor]];
